@@ -1,0 +1,19 @@
+# --- Ingestion and chunking ---
+data_dir: data/raw
+index_path: data/processed/faiss.index
+chunks_path: data/processed/chunks.json
+chunk_size: 512          # characters (TODO: try token-based chunking)
+chunk_overlap: 128
+
+# --- Embeddings ---
+embedding_model: sentence-transformers/all-MiniLM-L6-v2
+embedding_batch_size: 32
+
+# --- Retrieval ---
+top_k: 3
+
+# --- Generation ---
+llm_provider: anthropic         # anthropic | openai
+llm_model: claude-sonnet-4-6
+max_tokens: 1024
+temperature: 0.0

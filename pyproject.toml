@@ -1,0 +1,38 @@
+[project]
+name = "rag-document-assistant"
+version = "0.1.0"
+description = "End-to-end RAG system with a quantitative evaluation layer."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "sentence-transformers>=3.0",
+    "faiss-cpu>=1.8",
+    "pypdf>=4.0",
+    "anthropic>=0.40",          # cambia a 'openai' si prefieres
+    "pyyaml>=6.0",
+    "numpy>=1.26",
+    "python-dotenv>=1.0",
+    "streamlit>=1.38",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.6", "pytest>=8.0", "pre-commit>=3.8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rag_assistant"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

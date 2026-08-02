@@ -1,6 +1,6 @@
 # RAG Document Assistant
 
-[![CI](https://github.com/your-username/rag-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/rag-document-assistant/actions)
+[![CI](https://github.com/NataliaBV1/rag-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/NataliaBV1/rag-document-assistant/actions)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
@@ -121,5 +121,5 @@ Place your documents in `data/raw/` (pdf, txt, md). For the evaluation set, crea
 
 ## Author
 
-**[Your name]** — Physics Engineer | ML / Deep Learning
-[LinkedIn](#) · [GitHub](#)
+**Natalia Becerra Villada** — Physics Engineer | ML / Deep Learning
+[LinkedIn]((https://linkedin.com/in/natalia-becerra-villada) · [GitHub](https://github.com/NataliaBV1)

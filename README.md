@@ -20,9 +20,11 @@ An end-to-end **Retrieval-Augmented Generation (RAG)** system that answers quest
 | Baseline (fixed chunk) |        512 |     3 |       0.00 | 0.00 |         0.00 |             0.00 |
 | + overlap 128          |        512 |     3 |       0.00 | 0.00 |         0.00 |             0.00 |
 | + top-k 5              |        512 |     5 |       0.00 | 0.00 |         0.00 |             0.00 |
+**Demo:**
 
-**Demo:** _(add your HuggingFace Spaces / Streamlit link here once deployed)_
-**GIF:** _(add a 5-10s GIF of the app answering a question)_
+![RAG answering a question](reports/figures/demo_answer.png)
+
+![Retrieved sources with similarity scores](reports/figures/demo_sources.png)
 
 ---
 

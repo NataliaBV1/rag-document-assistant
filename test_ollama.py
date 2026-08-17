@@ -1,0 +1,8 @@
+"""Quick test: can Python talk to Ollama?"""
+import ollama
+
+response = ollama.chat(
+    model="phi3:mini",
+    messages=[{"role": "user", "content": "Say hello in one sentence."}],
+)
+print(response["message"]["content"])

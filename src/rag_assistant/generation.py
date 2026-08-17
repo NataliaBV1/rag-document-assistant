@@ -1,7 +1,7 @@
-"""Generation: build the prompt with context and call the LLM."""
+"""Generation: build the prompt with context and call the local LLM (Ollama)."""
 from __future__ import annotations
 
-import os
+import ollama
 
 SYSTEM_PROMPT = (
     "You are an assistant that answers ONLY based on the provided context. "
@@ -20,19 +20,14 @@ def build_prompt(query: str, contexts: list[dict]) -> str:
 
 def generate_answer(query: str, contexts: list[dict], model: str,
                     max_tokens: int, temperature: float) -> str:
-    """Call the LLM with the assembled prompt. Skeleton for Anthropic.
-
-    TODO: if you use OpenAI or another provider, abstract this behind an interface.
-    """
-    import anthropic  # local import so tests don't require the dependency
-
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    """Call the local Ollama model with the assembled prompt."""
     prompt = build_prompt(query, contexts)
-    resp = client.messages.create(
+    response = ollama.chat(
         model=model,
-        max_tokens=max_tokens,
-        temperature=temperature,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": prompt}],
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ],
+        options={"temperature": temperature, "num_predict": max_tokens},
     )
-    return resp.content[0].text
+    return response["message"]["content"]

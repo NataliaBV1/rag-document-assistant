@@ -1,9 +1,9 @@
-"""RAG evaluation: retrieval and generation metrics (LLM-as-judge).
-
-This is the layer that sets you apart. Start simple and keep it honest.
-For production, consider RAGAS (https://github.com/explodinggradients/ragas).
-"""
+"""RAG evaluation: retrieval and generation metrics (LLM-as-judge)."""
 from __future__ import annotations
+
+import re
+
+import ollama
 
 
 # ---------- Retrieval metrics (require ground-truth chunk) ----------
@@ -35,12 +35,20 @@ RELEVANCY_PROMPT = (
 
 
 def judge_score(prompt: str, model: str) -> float:
-    """Call an LLM as a judge and parse a score in [0, 1].
+    """Call an LLM as a judge and parse a score in [0, 1]."""
+    response = ollama.chat(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        options={"temperature": 0.0},
+    )
+    text = response["message"]["content"]
 
-    TODO: implement the call (reuse generation.generate_answer or a direct
-    client) and parse the number. Handle parsing failures robustly.
-    """
-    raise NotImplementedError("Implement the LLM-judge call and score parsing.")
+    match = re.search(r"\d+\.?\d*", text)
+    if match is None:
+        return 0.0
+
+    score = float(match.group())
+    return max(0.0, min(1.0, score))
 
 
 def faithfulness(context: str, answer: str, model: str) -> float:

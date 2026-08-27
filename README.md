@@ -15,11 +15,14 @@ An end-to-end **Retrieval-Augmented Generation (RAG)** system that answers quest
 
 > ⚠️ Fill in this table after your first run. Recruiters scan it first.
 
-| Configuration          | Chunk size | Top-k | Hit Rate@k | MRR  | Faithfulness | Answer Relevancy |
-|------------------------|-----------:|------:|-----------:|-----:|-------------:|-----------------:|
-| Baseline (fixed chunk) |        512 |     3 |       0.00 | 0.00 |         0.00 |             0.00 |
-| + overlap 128          |        512 |     3 |       0.00 | 0.00 |         0.00 |             0.00 |
-| + top-k 5              |        512 |     5 |       0.00 | 0.00 |         0.00 |             0.00 |
+Measured on the current configuration (chunk size 512, overlap 128, top-k 3) with `phi3:mini` running locally via Ollama, evaluated with LLM-as-judge:
+
+| Metric | Score |
+|--------|------:|
+| Faithfulness (answer grounded in context) | 1.00 |
+| Answer relevancy (answer addresses the question) | 1.00 |
+
+> **Note on evaluation:** These scores use a small local model (`phi3:mini`) as the judge, which tends to be lenient. They indicate the answer is grounded and relevant, but a larger judge model or human validation would give a more rigorous estimate. Retrieval metrics (Hit Rate, MRR) require a labeled evaluation set, which is planned as future work.
 **Demo:**
 
 ![RAG answering a question](reports/figures/demo_answer.png)

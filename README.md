@@ -13,7 +13,7 @@ An end-to-end **Retrieval-Augmented Generation (RAG)** system that answers quest
 
 ## Results
 
-> ⚠️ Fill in this table after your first run. Recruiters scan it first.
+
 
 Measured on the current configuration (chunk size 512, overlap 128, top-k 3) with `phi3:mini` running locally via Ollama, evaluated with LLM-as-judge:
 
